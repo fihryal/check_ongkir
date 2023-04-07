@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,13 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $fileKota = file_get_contents(base_path('/database/city.json'));
+        $fileRegency = file_get_contents(base_path('/database/regency.json'));
+
+        $datacity = json_decode($fileKota, true);
+        $dataRegency = json_decode($fileRegency, true);
+
+        City::insert($datacity);
+        City::insert($dataRegency);
     }
 }
