@@ -13,10 +13,10 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
-        $fileKota = file_get_contents(base_path('/database/city.json'));
+        $fileCity = file_get_contents(base_path('/database/city.json'));
         $fileRegency = file_get_contents(base_path('/database/regency.json'));
 
-        $datacity = json_decode($fileKota, true);
+        $datacity = json_decode($fileCity, true);
         $dataRegency = json_decode($fileRegency, true);
 
         City::insert($datacity);
